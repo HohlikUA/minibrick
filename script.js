@@ -86,34 +86,31 @@ document.getElementById('left-image').addEventListener('click', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll('.info-btn'); // Кнопка подсказки
-    const tooltips = document.querySelectorAll('.tooltip'); // Текст подсказки
-    let hideTimeout;
+    const buttons = document.querySelectorAll('.info-btn'); // Кнопки
+    const tooltips = document.querySelectorAll('.tooltip'); // Подсказки
 
     buttons.forEach((button, index) => {
         button.addEventListener('click', function () {
-            toggleTooltip(tooltips[index]);
-        });
-
-        button.addEventListener('touchstart', function (e) {
-            e.preventDefault(); // Отключаем "двойное нажатие" на телефоне
-            toggleTooltip(tooltips[index]);
+            toggleTooltip(tooltips[index]); // Показываем/скрываем подсказку
         });
     });
 
     function toggleTooltip(tooltip) {
-        clearTimeout(hideTimeout); // Очищаем старый таймер
-
-        if (tooltip.style.visibility === 'visible') {
-            tooltip.style.visibility = 'hidden'; // Скрываем подсказку
+        if (tooltip.classList.contains('active')) {
+            tooltip.classList.remove('active'); // Скрываем подсказку
         } else {
-            tooltip.style.visibility = 'visible'; // Показываем подсказку
-            hideTimeout = setTimeout(() => {
-                tooltip.style.visibility = 'hidden'; // Автоматически скрываем через 2 сек
+            // Сначала скрываем все подсказки
+            document.querySelectorAll('.tooltip').forEach(t => t.classList.remove('active'));
+            tooltip.classList.add('active'); // Показываем выбранную подсказку
+
+            // Автоматическое скрытие через 2 секунды
+            setTimeout(() => {
+                tooltip.classList.remove('active');
             }, 2000);
         }
     }
 });
+
 
 // Инициализация изображения и текста при загрузке
 updateImages();
