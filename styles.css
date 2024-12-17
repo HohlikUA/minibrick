@@ -155,7 +155,7 @@ body {
     display: inline-block;
 }
 
-/* Стили для кнопки с изображением */
+/* Убираем белый фон для кнопки на всех устройствах */
 .info-btn {
     padding: 0;
     border: none;
@@ -167,10 +167,12 @@ body {
     width: 30px; /* Размер иконки */
     height: 30px;
     object-fit: contain;
+    transition: filter 0.3s ease; /* Плавный переход яркости */
 }
 
-.info-btn:hover .info-icon {
-    filter: brightness(1.2); /* Изменение яркости при наведении */
+/* Эффект яркости при нажатии */
+.info-icon.active {
+    filter: brightness(1.2);
 }
 
 .tooltip {
