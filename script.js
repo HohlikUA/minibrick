@@ -85,28 +85,34 @@ document.getElementById('left-image').addEventListener('click', () => {
     document.getElementById(currentPart).src = selectedPartImages[prevIndex]; // Обновляем картинку на человеке
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const buttons = document.querySelectorAll('.arrow'); // Все кнопки
-    const tooltip = document.querySelector('#tooltip'); // Подсказка
-    let hideTimeout; // Переменная для хранения таймера
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll('.info-btn'); // Кнопка подсказки
+    const tooltips = document.querySelectorAll('.tooltip'); // Текст подсказки
+    let hideTimeout;
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Очищаем предыдущий таймер, если был
-            clearTimeout(hideTimeout);
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', function () {
+            toggleTooltip(tooltips[index]);
+        });
 
-            if (tooltip.style.display === 'block') {
-                tooltip.style.display = 'none'; // Прячем подсказку, если она уже видима
-            } else {
-                tooltip.style.display = 'block'; // Показываем подсказку
-
-                // Автоматически скрываем подсказку через 2 секунды
-                hideTimeout = setTimeout(() => {
-                    tooltip.style.display = 'none';
-                }, 2000);
-            }
+        button.addEventListener('touchstart', function (e) {
+            e.preventDefault(); // Отключаем "двойное нажатие" на телефоне
+            toggleTooltip(tooltips[index]);
         });
     });
+
+    function toggleTooltip(tooltip) {
+        clearTimeout(hideTimeout); // Очищаем старый таймер
+
+        if (tooltip.style.visibility === 'visible') {
+            tooltip.style.visibility = 'hidden'; // Скрываем подсказку
+        } else {
+            tooltip.style.visibility = 'visible'; // Показываем подсказку
+            hideTimeout = setTimeout(() => {
+                tooltip.style.visibility = 'hidden'; // Автоматически скрываем через 2 сек
+            }, 2000);
+        }
+    }
 });
 
 // Инициализация изображения и текста при загрузке
