@@ -16,13 +16,22 @@ const partOptions = {
     ]
 };
 
+const selectedIndices = {
+    head: 0,
+    torso: 0,
+    legs: 0
+};
+
 // Функция обновления миниатюр в зависимости от выбранной части
 function updateImages() {
     const selectedPartImages = partOptions[currentPart];
-    const selectedImage = selectedPartImages[0]; // Берем первое изображение для начала
-    document.getElementById('selected-image').src = selectedImage;
+    const currentIndex = selectedIndices[currentPart]; // Получаем сохраненный индекс
+    const selectedImage = selectedPartImages[currentIndex]; // Берем изображение по индексу
     
-    // Обновляем миниатюры внизу
+    document.getElementById('selected-image').src = selectedImage;
+    document.getElementById(currentPart).src = selectedImage; // Обновляем картинку на человеке
+
+    // Обновляем миниатюры
     let thumbnailsContainer = document.getElementById('image-thumbnails');
     thumbnailsContainer.innerHTML = ''; // Очищаем старые миниатюры
 
@@ -30,9 +39,13 @@ function updateImages() {
         let imgElement = document.createElement('img');
         imgElement.src = imageUrl;
         imgElement.classList.add('image-thumbnail');
+        if (index === currentIndex) imgElement.classList.add('selected'); // Подсветка выбранной миниатюры
+        
         imgElement.onclick = function() {
-            document.getElementById('selected-image').src = imageUrl; // Меняем большое изображение
-            document.getElementById(currentPart).src = imageUrl; // Меняем картинку на человеке
+            document.getElementById('selected-image').src = imageUrl;
+            document.getElementById(currentPart).src = imageUrl;
+            selectedIndices[currentPart] = index; // Сохраняем индекс при клике
+            updateImages(); // Обновляем миниатюры
         };
         thumbnailsContainer.appendChild(imgElement);
     });
@@ -71,18 +84,22 @@ document.getElementById('prev-part').addEventListener('click', () => {
 // Стрелки для смены изображения
 document.getElementById('right-image').addEventListener('click', () => {
     const selectedPartImages = partOptions[currentPart];
-    const currentIndex = selectedPartImages.indexOf(document.getElementById('selected-image').src);
-    const nextIndex = (currentIndex + 1) % selectedPartImages.length;
-    document.getElementById('selected-image').src = selectedPartImages[nextIndex];
-    document.getElementById(currentPart).src = selectedPartImages[nextIndex]; // Обновляем картинку на человеке
+    let currentIndex = selectedIndices[currentPart]; // Берем текущий индекс
+    currentIndex = (currentIndex + 1) % selectedPartImages.length; // Сдвиг вперед
+    selectedIndices[currentPart] = currentIndex; // Сохраняем индекс
+
+    document.getElementById('selected-image').src = selectedPartImages[currentIndex];
+    document.getElementById(currentPart).src = selectedPartImages[currentIndex]; // Обновляем картинку на человеке
 });
 
 document.getElementById('left-image').addEventListener('click', () => {
     const selectedPartImages = partOptions[currentPart];
-    const currentIndex = selectedPartImages.indexOf(document.getElementById('selected-image').src);
-    const prevIndex = (currentIndex - 1 + selectedPartImages.length) % selectedPartImages.length;
-    document.getElementById('selected-image').src = selectedPartImages[prevIndex];
-    document.getElementById(currentPart).src = selectedPartImages[prevIndex]; // Обновляем картинку на человеке
+    let currentIndex = selectedIndices[currentPart]; // Берем текущий индекс
+    currentIndex = (currentIndex - 1 + selectedPartImages.length) % selectedPartImages.length; // Сдвиг назад
+    selectedIndices[currentPart] = currentIndex; // Сохраняем индекс
+
+    document.getElementById('selected-image').src = selectedPartImages[currentIndex];
+    document.getElementById(currentPart).src = selectedPartImages[currentIndex]; // Обновляем картинку на человеке
 });
 
 document.addEventListener("DOMContentLoaded", function () {
