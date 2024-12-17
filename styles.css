@@ -176,3 +176,8 @@ body {
     visibility: visible; /* Показываем подсказку */
     opacity: 1;
 }
+
+.image-thumbnail.selected {
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
