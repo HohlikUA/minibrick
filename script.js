@@ -88,13 +88,22 @@ document.getElementById('left-image').addEventListener('click', () => {
 document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.querySelectorAll('.arrow'); // Все кнопки
     const tooltip = document.querySelector('#tooltip'); // Подсказка
+    let hideTimeout; // Переменная для хранения таймера
 
     buttons.forEach(button => {
         button.addEventListener('click', function() {
+            // Очищаем предыдущий таймер, если был
+            clearTimeout(hideTimeout);
+
             if (tooltip.style.display === 'block') {
-                tooltip.style.display = 'none'; // Прячем подсказку, если она видима
+                tooltip.style.display = 'none'; // Прячем подсказку, если она уже видима
             } else {
                 tooltip.style.display = 'block'; // Показываем подсказку
+
+                // Автоматически скрываем подсказку через 2 секунды
+                hideTimeout = setTimeout(() => {
+                    tooltip.style.display = 'none';
+                }, 2000);
             }
         });
     });
