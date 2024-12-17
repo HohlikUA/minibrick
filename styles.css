@@ -1,105 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-    flex-direction: column;
-    background-color: #ca1010; /* Цвет фона на случай ошибки загрузки */
-    background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/dectop.png'); /* Фон для десктопов */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-/* Медиазапрос для мобильных устройств */
-@media (max-width: 768px) {
-    body {
-        background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/mobile.png'); /* Фон для мобильных */
-        background-size: cover;
-        background-position: center;
-    }
-
-    .tooltip {
-        width: 150px; /* Уменьшаем ширину подсказки для мобильных */
-        font-size: 14px;
-        bottom: 110%; /* Немного уменьшить расстояние */
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        background-size: contain; /* Подгоняем фон на маленьких экранах */
-        background-attachment: scroll; /* Отключаем фиксированный фон */
-    }
-
-    .tooltip {
-        width: 120px; /* Еще меньше для очень маленьких экранов */
-        font-size: 12px;
-        bottom: 100%; /* Подсказка будет еще ближе к кнопке */
-    }
-}
-
-.container {
-    text-align: center;
-    width: 80%;
-    max-width: 1000px;
-    height: 65vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#person {
-    position: relative;
-    width: 200px;
-    height: 600px;
-    margin-bottom: 20px;
-}
-
-#head, #torso, #legs {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-}
-
-#head {
-    max-width: 80%;
-    max-height: 230px;
-    height: auto;
-    width: auto;
-}
-
-#torso {
-    top: 120px;
-}
-
-#legs {
-    top: 215px;
-    max-width: 64%;
-    max-height: 230px;
-    height: auto;
-    width: auto;
-}
-
-.controls {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    max-width: 350px;
-}
-
 .part-selection {
     display: flex;
     justify-content: center;
@@ -107,97 +5,44 @@ body {
     gap: 10px;
     width: 100%;
     max-width: 350px;
-}
-
-.arrow {
-    padding: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    min-width: 50px;
-    max-width: 50px;
-    text-align: center;
-}
-
-.arrow:hover {
-    background-color: #45a049;
-}
-
-.image-selection {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    max-width: 350px;
-}
-
-.image-thumbnail {
-    width: 50px;
-    height: auto;
-    object-fit: cover;
+    position: relative;
+    background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/front1.png'); /* Укажите ссылку на ваше изображение */
+    background-size: cover; /* Фон будет покрывать весь контейнер */
+    background-position: center; /* Центрируем фон */
+    background-repeat: no-repeat; /* Не повторяем фон */
+    padding: 20px; /* Добавляем отступы для текста */
+    border-radius: 10px; /* Закруглим углы (по желанию) */
+    box-sizing: border-box; /* Убедимся, что padding не влияет на размеры */
 }
 
 #selected-part {
     font-size: 20px;
-    min-width: 100px;
-    text-align: center;
-    white-space: nowrap;
-    color: #333;
+    color: #fff; /* Сделаем текст белым для контраста */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Добавим тень для улучшения читаемости */
+    z-index: 1; /* Обеспечиваем, чтобы текст был сверху */
 }
 
-.tooltip-container {
-    position: relative;
-    display: inline-block;
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 768px) {
+    .part-selection {
+        background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/front1.png'); /* Фон для мобильных */
+        background-size: cover;
+        background-position: center;
+    }
+
+    #selected-part {
+        font-size: 16px; /* Меньший размер текста для мобильных */
+    }
 }
 
-/* Убираем белый фон для кнопки на всех устройствах */
-.info-btn {
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
+/* Медиазапрос для еще меньших экранов (например, 480px) */
+@media (max-width: 480px) {
+    .part-selection {
+        background-size: contain; /* Подгоняем фон на маленьких экранах */
+        background-attachment: scroll; /* Отключаем фиксированный фон */
+    }
 
-.info-icon {
-    width: 30px; /* Размер иконки */
-    height: 30px;
-    object-fit: contain;
-    transition: filter 0.3s ease; /* Плавный переход яркости */
-}
-
-/* Эффект яркости при нажатии */
-.info-icon.active {
-    filter: brightness(1.2);
-}
-
-.tooltip {
-    visibility: hidden; /* Скрываем по умолчанию */
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in-out; /* Анимация появления */
-    width: 200px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 10px;
-    position: absolute;
-    z-index: 1;
-    bottom: 120%; /* Размещение подсказки */
-    left: 50%;
-    margin-left: -100px;
-}
-
-.tooltip.active {
-    visibility: visible; /* Показываем подсказку */
-    opacity: 1;
-}
-
-.image-thumbnail.selected {
-    border: 2px solid #4CAF50;
-    border-radius: 5px;
+    #selected-part {
+        font-size: 14px; /* Еще меньше шрифт для очень маленьких экранов */
+    }
 }
