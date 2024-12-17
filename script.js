@@ -102,13 +102,21 @@ document.getElementById('left-image').addEventListener('click', () => {
     document.getElementById(currentPart).src = selectedPartImages[currentIndex]; // Обновляем картинку на человеке
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll('.info-btn'); // Кнопки
     const tooltips = document.querySelectorAll('.tooltip'); // Подсказки
 
     buttons.forEach((button, index) => {
-        button.addEventListener('click', function () {
+        const icon = button.querySelector('.info-icon'); // Ищем иконку внутри кнопки
+
+        button.addEventListener('click', () => {
             toggleTooltip(tooltips[index]); // Показываем/скрываем подсказку
+            
+            // Эффект яркости для иконки
+            icon.classList.add('active');
+            setTimeout(() => {
+                icon.classList.remove('active');
+            }, 2000);
         });
     });
 
@@ -116,14 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (tooltip.classList.contains('active')) {
             tooltip.classList.remove('active'); // Скрываем подсказку
         } else {
-            // Сначала скрываем все подсказки
-            document.querySelectorAll('.tooltip').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tooltip').forEach(t => t.classList.remove('active')); // Скрываем другие подсказки
             tooltip.classList.add('active'); // Показываем выбранную подсказку
 
-            // Автоматическое скрытие через 2 секунды
-            setTimeout(() => {
-                tooltip.classList.remove('active');
-            }, 2000);
+            setTimeout(() => tooltip.classList.remove('active'), 2000); // Автоматическое скрытие через 2 секунды
         }
     }
 });
