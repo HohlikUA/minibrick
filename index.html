@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменение части тела</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Человек -->
+        <div id="person">
+            <img id="head" src="https://imgur.com/6toXVN5.jpg" alt="Head 1">
+            <img id="torso" src="https://imgur.com/aTjW0jd.jpg" alt="Torso 1">
+            <img id="legs" src="https://imgur.com/2kcmZGf.jpg" alt="Legs 1">
+        </div>
+
+        <!-- Управление выборами -->
+        <div class="controls">
+            <!-- Выбор части -->
+            <div class="part-selection">
+                <button class="arrow" id="prev-part">←</button>
+                <div id="selected-part">Голова</div>
+                <button class="arrow" id="next-part">→</button>
+            </div>
+
+            <!-- Миниатюра выбранной части -->
+            <div class="image-selection">
+                <button class="arrow" id="left-image">←</button>
+                <img id="selected-image" src="https://imgur.com/6toXVN5.jpg" alt="Selected Head" class="image-thumbnail" />
+                <button class="arrow" id="right-image">→</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
