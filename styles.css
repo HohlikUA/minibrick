@@ -4,10 +4,31 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ca1010;
     margin: 0;
     overflow: hidden;
     flex-direction: column;
+    background-color: #ca1010; /* Цвет фона на случай ошибки загрузки */
+    background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/dectop.png'); /* Фон для десктопов */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Медиазапрос для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/mobile.png'); /* Фон для мобильных */
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-size: contain; /* Подгоняем фон на маленьких экранах */
+        background-attachment: scroll; /* Отключаем фиксированный фон */
+    }
 }
 
 .container {
