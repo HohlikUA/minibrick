@@ -85,6 +85,21 @@ document.getElementById('left-image').addEventListener('click', () => {
     document.getElementById(currentPart).src = selectedPartImages[prevIndex]; // Обновляем картинку на человеке
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.arrow'); // Все кнопки
+    const tooltip = document.querySelector('#tooltip'); // Подсказка
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (tooltip.style.display === 'block') {
+                tooltip.style.display = 'none'; // Прячем подсказку, если она видима
+            } else {
+                tooltip.style.display = 'block'; // Показываем подсказку
+            }
+        });
+    });
+});
+
 // Инициализация изображения и текста при загрузке
 updateImages();
 updateText();
