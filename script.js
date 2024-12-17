@@ -110,13 +110,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const icon = button.querySelector('.info-icon'); // Ищем иконку внутри кнопки
 
         button.addEventListener('click', () => {
-            toggleTooltip(tooltips[index]); // Показываем/скрываем подсказку
-            
-            // Эффект яркости для иконки
-            icon.classList.add('active');
-            setTimeout(() => {
+            // Переключаем состояние подсказки
+            toggleTooltip(tooltips[index]);
+
+            // Переключаем эффект яркости на иконке
+            if (icon.classList.contains('active')) {
+                // Если эффект уже активен, удаляем его немедленно
                 icon.classList.remove('active');
-            }, 2000);
+            } else {
+                // Иначе добавляем эффект яркости
+                icon.classList.add('active');
+                // Убираем эффект через 2 секунды, если не было повторного клика
+                setTimeout(() => {
+                    icon.classList.remove('active');
+                }, 2000);
+            }
         });
     });
 
@@ -131,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
 
 // Инициализация изображения и текста при загрузке
 updateImages();
