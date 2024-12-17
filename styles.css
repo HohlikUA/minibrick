@@ -22,12 +22,24 @@ body {
         background-size: cover;
         background-position: center;
     }
+
+    .tooltip {
+        width: 150px; /* Уменьшаем ширину подсказки для мобильных */
+        font-size: 14px;
+        bottom: 110%; /* Немного уменьшить расстояние */
+    }
 }
 
 @media (max-width: 480px) {
     body {
         background-size: contain; /* Подгоняем фон на маленьких экранах */
         background-attachment: scroll; /* Отключаем фиксированный фон */
+    }
+
+    .tooltip {
+        width: 120px; /* Еще меньше для очень маленьких экранов */
+        font-size: 12px;
+        bottom: 100%; /* Подсказка будет еще ближе к кнопке */
     }
 }
 
@@ -164,4 +176,3 @@ body {
     visibility: visible; /* Показываем подсказку */
     opacity: 1;
 }
-
