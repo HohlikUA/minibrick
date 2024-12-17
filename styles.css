@@ -4,19 +4,13 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #f5f5f5;
     margin: 0;
     overflow: hidden;
     flex-direction: column;
-    background-color: #ca1010; /* Цвет фона на случай ошибки загрузки */
-    background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/dectop.png'); /* Фон для десктопов */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 
-    touch-action: manipulation; /* Отключает жесты масштабирования и прокрутки */
-    -ms-touch-action: manipulation; /* Для старых версий IE */
-    overflow-x: hidden; /* Отключает горизонтальный скролл */
+    touch-action: manipulation; /* Для отключения жестов масштабирования */
+    -ms-touch-action: manipulation; /* Для старых браузеров IE */
 }
 
 /* Медиазапрос для мобильных устройств */
