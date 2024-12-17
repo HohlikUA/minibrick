@@ -140,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
 // Инициализация изображения и текста при загрузке
 updateImages();
 updateText();
