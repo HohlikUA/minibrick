@@ -113,12 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // Переключаем состояние подсказки
             toggleTooltip(tooltips[index]);
 
-            // Переключаем эффект яркости на иконке
+            // Если эффект уже активен, немедленно его убираем
             if (icon.classList.contains('active')) {
-                // Если эффект уже активен, удаляем его немедленно
                 icon.classList.remove('active');
             } else {
-                // Иначе добавляем эффект яркости
+                // Если эффекта нет, добавляем его
                 icon.classList.add('active');
                 // Убираем эффект через 2 секунды, если не было повторного клика
                 setTimeout(() => {
