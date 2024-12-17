@@ -13,6 +13,10 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    touch-action: manipulation; /* Отключает жесты масштабирования и прокрутки */
+    -ms-touch-action: manipulation; /* Для старых версий IE */
+    overflow-x: hidden; /* Отключает горизонтальный скролл */
 }
 
 /* Медиазапрос для мобильных устройств */
