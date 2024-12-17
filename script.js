@@ -3,7 +3,7 @@ let currentPart = 'head'; // Изначально показываем голо�
 // Ссылки на изображения для каждой части тела
 const partOptions = {
     head: [
-        'https://imgur.com/6toXVN5.jpg', 
+        'https://imgur.com/6toXVN5.jpg',
         'https://imgur.com/BsnmHJp.jpg' // Добавляем несколько вариантов изображений
     ],
     torso: [
@@ -110,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
-
 
 // Инициализация изображения и текста при загрузке
 updateImages();
