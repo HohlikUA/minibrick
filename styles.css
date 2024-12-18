@@ -1,3 +1,4 @@
+/* Основной стиль */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -28,8 +29,31 @@ body {
         font-size: 14px;
         bottom: 110%; /* Немного уменьшить расстояние */
     }
+
+    .controls {
+        width: 90%; /* Меньше отступы для мобильных */
+        max-width: none;
+    }
+
+    #person {
+        width: 150px; /* Уменьшаем размеры для мобильных */
+        height: auto;
+    }
+
+    .image-thumbnail {
+        width: 40px; /* Миниатюры уменьшены */
+    }
+
+    .arrow-img {
+        width: 24px; /* Уменьшаем размер стрелок */
+    }
+
+    #selected-part {
+        font-size: 18px; /* Уменьшаем текст */
+    }
 }
 
+/* Для экрана с шириной до 480px */
 @media (max-width: 480px) {
     body {
         background-size: contain; /* Подгоняем фон на маленьких экранах */
@@ -37,15 +61,41 @@ body {
     }
 
     .tooltip {
-        width: 120px; /* Еще меньше для очень маленьких экранов */
+        width: 120px; /* Еще меньше для маленьких экранов */
         font-size: 12px;
         bottom: 100%; /* Подсказка будет еще ближе к кнопке */
     }
+
+    .container {
+        height: 70vh;
+    }
+
+    #person {
+        width: 130px;
+        height: auto;
+    }
+
+    .image-thumbnail {
+        width: 30px; /* Миниатюры для маленьких экранов */
+    }
+
+    .arrow-img {
+        width: 20px; /* Еще меньше стрелки */
+    }
+
+    .part-selection {
+        width: 25%; /* Ширина кнопок для маленьких экранов */
+    }
+
+    #selected-part {
+        font-size: 16px; /* Еще меньше текст */
+    }
 }
 
+/* Контейнер */
 .container {
     text-align: center;
-    width: 80%;
+    width: 90%;
     max-width: 1000px;
     height: 65vh;
     display: flex;
@@ -54,6 +104,7 @@ body {
     align-items: center;
 }
 
+/* Изображение тела */
 #person {
     position: relative;
     width: 200px;
@@ -89,6 +140,7 @@ body {
     width: auto;
 }
 
+/* Управление */
 .controls {
     margin-top: 30px;
     display: flex;
@@ -100,6 +152,7 @@ body {
     max-width: 350px;
 }
 
+/* Кнопки выбора частей */
 .part-selection {
     display: flex;
     justify-content: center;
@@ -110,11 +163,11 @@ body {
 }
 
 .arrow {
-    padding: 0; /* Убираем отступы */
-    font-size: 0; /* Убираем текст */
+    padding: 0;
+    font-size: 0;
     cursor: pointer;
-    background-color: transparent; /* Сделаем фон прозрачным */
-    border: none; /* Убираем границу */
+    background-color: transparent;
+    border: none;
     min-width: 50px;
     max-width: 50px;
     text-align: center;
@@ -124,16 +177,17 @@ body {
 }
 
 .arrow-img {
-    width: 30px; /* Размер изображения */
+    width: 30px;
     height: auto;
-    object-fit: contain; /* Чтобы картинка не искажалась */
+    object-fit: contain;
 }
 
-/* Наведение на картинку стрелки */
+/* Наведение на стрелки */
 .arrow:hover .arrow-img {
-    filter: brightness(0.8); /* Эффект затемнения при наведении */
+    filter: brightness(0.8);
 }
 
+/* Миниатюры изображений */
 .image-selection {
     margin-top: 20px;
     display: flex;
@@ -158,12 +212,12 @@ body {
     color: #333;
 }
 
+/* Подсказки */
 .tooltip-container {
     position: relative;
     display: inline-block;
 }
 
-/* Убираем белый фон для кнопки на всех устройствах */
 .info-btn {
     padding: 0;
     border: none;
@@ -172,21 +226,20 @@ body {
 }
 
 .info-icon {
-    width: 30px; /* Размер иконки */
+    width: 30px;
     height: 30px;
     object-fit: contain;
-    transition: filter 0.3s ease; /* Плавный переход яркости */
+    transition: filter 0.3s ease;
 }
 
-/* Эффект яркости при нажатии */
 .info-icon.active {
     filter: brightness(1.2);
 }
 
 .tooltip {
-    visibility: hidden; /* Скрываем по умолчанию */
+    visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in-out; /* Анимация появления */
+    transition: visibility 0s, opacity 0.3s ease-in-out;
     width: 200px;
     background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
@@ -195,13 +248,13 @@ body {
     padding: 10px;
     position: absolute;
     z-index: 1;
-    bottom: 120%; /* Размещение подсказки */
+    bottom: 120%;
     left: 50%;
     margin-left: -100px;
 }
 
 .tooltip.active {
-    visibility: visible; /* Показываем подсказку */
+    visibility: visible;
     opacity: 1;
 }
 
@@ -215,18 +268,18 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    width: 17%; /* Используем полную ширину контейнера */
+    width: 17%;
     max-width: 350px;
     background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/front1.png');
-    background-size: contain; /* Обеспечиваем, что фон будет полностью вмещаться в контейнер */
-    background-position: center; /* Центрируем фон */
-    background-repeat: no-repeat; /* Не повторяем фон */
-    padding: 10px 20px; /* Добавляем отступы для текста */
-    border-radius: 10px; /* Закруглим углы (по желанию) */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
 #selected-part {
     font-size: 20px;
-    color: #fff; /* Белый цвет текста для контраста */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Добавим тень для улучшения читаемости */
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
