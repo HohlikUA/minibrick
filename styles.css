@@ -207,10 +207,10 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    width: 100%;
+    width: 17%; /* Используем полную ширину контейнера */
     max-width: 350px;
-    background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/front1.png'); /* Замените на URL вашего фона */
-    background-size: cover; /* Фон будет покрывать весь контейнер */
+    background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/front1.png');
+    background-size: contain; /* Обеспечиваем, что фон будет полностью вмещаться в контейнер */
     background-position: center; /* Центрируем фон */
     background-repeat: no-repeat; /* Не повторяем фон */
     padding: 10px 20px; /* Добавляем отступы для текста */
