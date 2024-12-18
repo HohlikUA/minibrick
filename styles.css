@@ -16,7 +16,7 @@ body {
     background-attachment: fixed;
 }
 
-/* Медиазапрос для мобильных устройств */
+/* Медиазапрос для планшетов и мобильных устройств */
 @media (max-width: 768px) {
     body {
         background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/mobile.png'); /* Фон для мобильных */
@@ -24,71 +24,90 @@ body {
         background-position: center;
     }
 
-    .tooltip {
-        width: 150px; /* Уменьшаем ширину подсказки для мобильных */
-        font-size: 14px;
-        bottom: 110%; /* Немного уменьшить расстояние */
+    .container {
+        height: 80vh;
     }
 
-    .controls {
-        width: 90%; /* Меньше отступы для мобильных */
-        max-width: none;
+    .part-selection {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap; /* Оборачиваем кнопки на мобильных */
+    }
+
+    .arrow {
+        min-width: 50px;
+        max-width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .arrow-img {
+        width: 24px; /* Меньше стрелки для мобильных */
     }
 
     #person {
-        width: 150px; /* Уменьшаем размеры для мобильных */
+        width: 160px; /* Уменьшаем размер тела */
         height: auto;
     }
 
     .image-thumbnail {
-        width: 40px; /* Миниатюры уменьшены */
-    }
-
-    .arrow-img {
-        width: 24px; /* Уменьшаем размер стрелок */
+        width: 50px; /* Уменьшаем миниатюры */
+        height: auto;
     }
 
     #selected-part {
-        font-size: 18px; /* Уменьшаем текст */
+        font-size: 18px; /* Уменьшаем размер шрифта */
+    }
+
+    .tooltip {
+        font-size: 14px;
+        width: 150px; /* Уменьшаем ширину подсказки */
+        bottom: 110%;
     }
 }
 
 /* Для экрана с шириной до 480px */
 @media (max-width: 480px) {
     body {
-        background-size: contain; /* Подгоняем фон на маленьких экранах */
+        background-size: contain; /* Фон адаптируется к меньшему экрану */
         background-attachment: scroll; /* Отключаем фиксированный фон */
-    }
-
-    .tooltip {
-        width: 120px; /* Еще меньше для маленьких экранов */
-        font-size: 12px;
-        bottom: 100%; /* Подсказка будет еще ближе к кнопке */
     }
 
     .container {
         height: 70vh;
     }
 
-    #person {
-        width: 130px;
-        height: auto;
-    }
-
-    .image-thumbnail {
-        width: 30px; /* Миниатюры для маленьких экранов */
+    .part-selection {
+        width: 100%;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
     }
 
     .arrow-img {
         width: 20px; /* Еще меньше стрелки */
     }
 
-    .part-selection {
-        width: 25%; /* Ширина кнопок для маленьких экранов */
+    #person {
+        width: 130px; /* Уменьшаем размеры */
+    }
+
+    .image-thumbnail {
+        width: 30px; /* Миниатюры меньше */
     }
 
     #selected-part {
-        font-size: 16px; /* Еще меньше текст */
+        font-size: 16px; /* Еще меньше шрифт */
+    }
+
+    .tooltip {
+        width: 120px;
+        font-size: 12px;
+        bottom: 100%;
     }
 }
 
