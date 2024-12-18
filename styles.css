@@ -7,7 +7,7 @@ body {
     margin: 0;
     overflow: hidden;
     flex-direction: column;
-    background-color: #ca1010; /* Цвет фона на случай ошибки загрузки */
+    background-color: #943a3a; /* Цвет фона на случай ошибки загрузки */
     background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/dectop.png'); /* Фон для десктопов */
     background-size: cover;
     background-position: center;
@@ -33,11 +33,11 @@ body {
     }
 
     #head {
-        max-width: 70%;
+        max-width: 70% !important;
     }
 
     #torso {
-        top: 100px;
+        top: 100px; 
     }
 
     #legs {
