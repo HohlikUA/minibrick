@@ -28,7 +28,7 @@ body {
     }
 
     #person {
-        width: 180px;
+        width: 180px !important;
         height: auto;
     }
 
@@ -37,11 +37,11 @@ body {
     }
 
     #torso {
-        top: 100px; 
+        top: 100px !important; 
     }
 
     #legs {
-        top: 190px;
+        top: 190px !important;
         max-width: 60%;
     }
 
