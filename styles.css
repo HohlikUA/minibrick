@@ -15,7 +15,6 @@ body {
     background-attachment: fixed;
 }
 
-/* Медиазапрос для мобильных устройств */
 @media (max-width: 768px) {
     body {
         background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/mobile.png'); /* Фон для мобильных */
@@ -23,10 +22,52 @@ body {
         background-position: center;
     }
 
+    .container {
+        width: 90%; /* Ширина контейнера на мобильных устройствах */
+        height: auto; /* Высота контейнера подстраивается */
+    }
+
+    #person {
+        width: 180px;
+        height: auto;
+    }
+
+    #head {
+        max-width: 70%;
+    }
+
+    #torso {
+        top: 100px;
+    }
+
+    #legs {
+        top: 190px;
+        max-width: 60%;
+    }
+
+    .controls {
+        gap: 15px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .arrow {
+        min-width: 40px;
+        max-width: 40px;
+    }
+
+    .image-thumbnail {
+        width: 40px;
+    }
+
     .tooltip {
         width: 150px; /* Уменьшаем ширину подсказки для мобильных */
         font-size: 14px;
-        bottom: 110%; /* Немного уменьшить расстояние */
+        bottom: 100%; /* Немного уменьшить расстояние */
+    }
+
+    #selected-part {
+        font-size: 16px; /* Меньше шрифт на мобильных */
     }
 }
 
@@ -36,10 +77,50 @@ body {
         background-attachment: scroll; /* Отключаем фиксированный фон */
     }
 
+    .container {
+        width: 95%; /* Еще меньше контейнер для очень маленьких экранов */
+    }
+
+    #person {
+        width: 160px;
+    }
+
+    #head {
+        max-width: 60%;
+    }
+
+    #torso {
+        top: 90px;
+    }
+
+    #legs {
+        top: 180px;
+        max-width: 50%;
+    }
+
+    .controls {
+        gap: 10px;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .arrow {
+        min-width: 35px;
+        max-width: 35px;
+    }
+
+    .image-thumbnail {
+        width: 35px;
+    }
+
     .tooltip {
         width: 120px; /* Еще меньше для очень маленьких экранов */
         font-size: 12px;
-        bottom: 100%; /* Подсказка будет еще ближе к кнопке */
+        bottom: 90%; /* Подсказка будет еще ближе к кнопке */
+    }
+
+    #selected-part {
+        font-size: 14px;
     }
 }
 
@@ -52,6 +133,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 #person {
@@ -67,14 +150,12 @@ body {
     height: auto;
     left: 50%;
     transform: translateX(-50%);
-    top: 0;
 }
 
 #head {
     max-width: 80%;
     max-height: 230px;
     height: auto;
-    width: auto;
 }
 
 #torso {
@@ -86,7 +167,6 @@ body {
     max-width: 64%;
     max-height: 230px;
     height: auto;
-    width: auto;
 }
 
 .controls {
