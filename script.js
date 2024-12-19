@@ -3,11 +3,20 @@ let currentPart = 'head'; // Изначально показываем голо�
 // Ссылки на изображения для каждой части тела
 const partOptions = {
     head: [
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/1.png?raw=true', // Добавляем несколько вариантов изображений
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/10.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/11.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/12.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/15.png?raw=true',
+        'https://i.imgur.com/1bvCbKQ.png?raw=true', // Добавляем несколько вариантов изображений
+        'https://i.imgur.com/8gnaHZA.png?raw=true',
+        'https://i.imgur.com/kQ20qIU.png?raw=true',
+        'https://imgur.com/tixroDK?raw=true',
+        'https://imgur.com/KvHb0LJ?raw=true',
+        'https://imgur.com/Ea8Yun2?raw=true',
+        'https://imgur.com/89lxk5e?raw=true',
+        'https://imgur.com/hd2wNBD?raw=true',
+        'https://imgur.com/fzjGeZH?raw=true',
+        'https://imgur.com/ogPWlMx?raw=true',
+        'https://imgur.com/117iecT?raw=true',
+        'https://imgur.com/TwecNDl?raw=true',
+        'https://imgur.com/gFer9mR?raw=true',
+        'https://imgur.com/ADTM6Ff?raw=true',
     ],
     torso: [
         'https://imgur.com/aTjW0jd.jpg',
