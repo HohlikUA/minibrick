@@ -17,7 +17,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/mobile.png'); /* Фон для мобильных */
+        background-image: url('https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/background/mobile1.png'); /* Фон для мобильных */
         background-size: cover;
         background-position: center;
     }
