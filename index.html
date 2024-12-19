@@ -10,7 +10,7 @@
     <div class="container">
  <!-- Человек -->
 <div id="person">
-    <img id="head" src="https://github.com/HohlikUA/minibrick/blob/main/Head/1.png" alt="Head 1">
+    <img id="head" src="https://imgur.com/6toXVN5.jpg" alt="Head 1">
     <img id="torso" src="https://imgur.com/aTjW0jd.jpg" alt="Torso 1">
     <img id="legs" src="https://imgur.com/2kcmZGf.jpg" alt="Legs 1">
 </div>
@@ -33,7 +33,60 @@
         <button class="arrow" id="left-image">
             <img src="https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/arrow2.png" alt="Left Arrow" class="arrow-img">
         </button>
-        <img id="selected-image" src="https://github.com/HohlikUA/minibrick/blob/main/Head/1.png" alt="Selected Head" class="image-thumbnail" />
+        <img id="selected-image" src="https://imgur.com/6toXVN5.jpg" alt="Selected Head" class="image-thumbnail" />
+        <button class="arrow" id="right-image">
+            <img src="https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/arrow1.png" alt="Right Arrow" class="arrow-img">
+        </button>
+    </div>
+
+    <div class="tooltip-container">
+        <button class="info-btn">
+            <img src="https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/info2.png" alt="Информация" class="info-icon">
+        </button>
+        <div class="tooltip">Нажмите на стрелки, чтобы выбрать части тела.</div>
+    </div>
+</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Изменение части тела</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+ <!-- Человек -->
+<div id="person">
+    <img id="head" src="https://imgur.com/6toXVN5.jpg" alt="Head 1">
+    <img id="torso" src="https://imgur.com/aTjW0jd.jpg" alt="Torso 1">
+    <img id="legs" src="https://imgur.com/2kcmZGf.jpg" alt="Legs 1">
+</div>
+
+<!-- Управление выборами -->
+<div class="controls">
+    <!-- Выбор части -->
+    <div class="part-selection">
+        <button class="arrow" id="prev-part">
+            <img src="https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/arrow2.png" alt="Left Arrow" class="arrow-img">
+        </button>
+        <div id="selected-part">Голова</div>
+        <button class="arrow" id="next-part">
+            <img src="https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/arrow1.png" alt="Right Arrow" class="arrow-img">
+        </button>
+    </div>
+
+    <!-- Миниатюра выбранной части -->
+    <div class="image-selection">
+        <button class="arrow" id="left-image">
+            <img src="https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/arrow2.png" alt="Left Arrow" class="arrow-img">
+        </button>
+        <img id="selected-image" src="https://imgur.com/6toXVN5.jpg" alt="Selected Head" class="image-thumbnail" />
         <button class="arrow" id="right-image">
             <img src="https://raw.githubusercontent.com/HohlikUA/minibrick/refs/heads/main/arrow1.png" alt="Right Arrow" class="arrow-img">
         </button>
