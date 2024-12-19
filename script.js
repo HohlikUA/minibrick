@@ -1,63 +1,49 @@
-let currentPart = 'head'; // Изначально показываем голову
+// Текущая выбранная часть тела
+let currentPart = 'head';
 
-// Ссылки на изображения для каждой части тела
-const partOptions = {
-    head: [
-        'https://i.imgur.com/1bvCbKQ.png?raw=true', // Добавляем несколько вариантов изображений
-        'https://i.imgur.com/8gnaHZA.png?raw=true',
-        'https://i.imgur.com/kQ20qIU.png?raw=true',
-        'https://i.imgur.com/tixroDK.png?raw=true',
-        'https://i.imgur.com/KvHb0LJ.png?raw=true',
-        'https://imgur.com/Ea8Yun2.png?raw=true',
-        'https://imgur.com/89lxk5e.png?raw=true',
-        'https://imgur.com/hd2wNBD.png?raw=true',
-        'https://imgur.com/fzjGeZH.png?raw=true',
-        'https://imgur.com/ogPWlMx.png?raw=true',
-        'https://imgur.com/117iecT.png?raw=true',
-        'https://imgur.com/TwecNDl.png?raw=true',
-        'https://imgur.com/gFer9mR.png?raw=true',
-        'https://imgur.com/ADTM6Ff.png?raw=true',
-    ],
-    torso: [
-        'https://imgur.com/aTjW0jd.jpg',
-        'https://imgur.com/yVeDF2M.jpg' // Добавляем несколько вариантов изображений
-    ],
-    legs: [
-        'https://imgur.com/2kcmZGf.jpg',
-        'https://imgur.com/ClKnI7K.jpg' // Добавляем несколько вариантов изображений
-    ]
-};
-
+// Объект для хранения данных из JSON
+let partOptions = {};
 const selectedIndices = {
     head: 0,
     torso: 0,
     legs: 0
 };
 
+// Загрузка данных из JSON файла
+fetch('images.json')
+    .then(response => response.json())
+    .then(data => {
+        partOptions = data; // Сохраняем данные из JSON
+        updateImages(); // Обновляем изображения после загрузки
+        updateText(); // Обновляем текст
+    })
+    .catch(error => console.error('Ошибка загрузки данных из JSON:', error));
+
 // Функция обновления миниатюр в зависимости от выбранной части
 function updateImages() {
     const selectedPartImages = partOptions[currentPart];
-    const currentIndex = selectedIndices[currentPart]; // Получаем сохраненный индекс
-    const selectedImage = selectedPartImages[currentIndex]; // Берем изображение по индексу
-    
+    const currentIndex = selectedIndices[currentPart];
+    const selectedImage = selectedPartImages[currentIndex];
+
+    // Обновляем основное изображение и изображение на фигуре
     document.getElementById('selected-image').src = selectedImage;
-    document.getElementById(currentPart).src = selectedImage; // Обновляем картинку на человеке
+    document.getElementById(currentPart).src = selectedImage;
 
     // Обновляем миниатюры
     let thumbnailsContainer = document.getElementById('image-thumbnails');
-    thumbnailsContainer.innerHTML = ''; // Очищаем старые миниатюры
+    thumbnailsContainer.innerHTML = '';
 
     selectedPartImages.forEach((imageUrl, index) => {
         let imgElement = document.createElement('img');
         imgElement.src = imageUrl;
         imgElement.classList.add('image-thumbnail');
-        if (index === currentIndex) imgElement.classList.add('selected'); // Подсветка выбранной миниатюры
-        
-        imgElement.onclick = function() {
+        if (index === currentIndex) imgElement.classList.add('selected');
+
+        imgElement.onclick = function () {
             document.getElementById('selected-image').src = imageUrl;
             document.getElementById(currentPart).src = imageUrl;
-            selectedIndices[currentPart] = index; // Сохраняем индекс при клике
-            updateImages(); // Обновляем миниатюры
+            selectedIndices[currentPart] = index;
+            updateImages();
         };
         thumbnailsContainer.appendChild(imgElement);
     });
@@ -70,87 +56,64 @@ function updateText() {
         torso: 'Торс',
         legs: 'Ноги'
     };
-
-    document.getElementById('selected-part').innerText = partText[currentPart]; // Меняем текст в выбранной части
+    document.getElementById('selected-part').innerText = partText[currentPart];
 }
 
 // Перелистывание частей тела
-document.getElementById('next-part').addEventListener('click', () => {
+function changePart(direction) {
     const parts = ['head', 'torso', 'legs'];
     let currentIndex = parts.indexOf(currentPart);
-    currentIndex = (currentIndex + 1) % parts.length;
+    currentIndex = (currentIndex + direction + parts.length) % parts.length;
     currentPart = parts[currentIndex];
-    updateText(); // Обновляем текст
-    updateImages(); // Обновляем изображения для выбранной части
-});
+    updateText();
+    updateImages();
+}
 
-document.getElementById('prev-part').addEventListener('click', () => {
-    const parts = ['head', 'torso', 'legs'];
-    let currentIndex = parts.indexOf(currentPart);
-    currentIndex = (currentIndex - 1 + parts.length) % parts.length;
-    currentPart = parts[currentIndex];
-    updateText(); // Обновляем текст
-    updateImages(); // Обновляем изображения для выбранной части
-});
+document.getElementById('next-part').addEventListener('click', () => changePart(1));
+document.getElementById('prev-part').addEventListener('click', () => changePart(-1));
 
-// Стрелки для смены изображения
-document.getElementById('right-image').addEventListener('click', () => {
+// Смена изображения (вперед/назад)
+function changeImage(direction) {
     const selectedPartImages = partOptions[currentPart];
-    let currentIndex = selectedIndices[currentPart]; // Берем текущий индекс
-    currentIndex = (currentIndex + 1) % selectedPartImages.length; // Сдвиг вперед
-    selectedIndices[currentPart] = currentIndex; // Сохраняем индекс
+    let currentIndex = selectedIndices[currentPart];
+    currentIndex = (currentIndex + direction + selectedPartImages.length) % selectedPartImages.length;
+    selectedIndices[currentPart] = currentIndex;
+    const selectedImage = selectedPartImages[currentIndex];
 
-    document.getElementById('selected-image').src = selectedPartImages[currentIndex];
-    document.getElementById(currentPart).src = selectedPartImages[currentIndex]; // Обновляем картинку на человеке
-});
+    document.getElementById('selected-image').src = selectedImage;
+    document.getElementById(currentPart).src = selectedImage;
+}
 
-document.getElementById('left-image').addEventListener('click', () => {
-    const selectedPartImages = partOptions[currentPart];
-    let currentIndex = selectedIndices[currentPart]; // Берем текущий индекс
-    currentIndex = (currentIndex - 1 + selectedPartImages.length) % selectedPartImages.length; // Сдвиг назад
-    selectedIndices[currentPart] = currentIndex; // Сохраняем индекс
+document.getElementById('right-image').addEventListener('click', () => changeImage(1));
+document.getElementById('left-image').addEventListener('click', () => changeImage(-1));
 
-    document.getElementById('selected-image').src = selectedPartImages[currentIndex];
-    document.getElementById(currentPart).src = selectedPartImages[currentIndex]; // Обновляем картинку на человеке
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll('.info-btn'); // Кнопки
-    const tooltips = document.querySelectorAll('.tooltip'); // Подсказки
+// Подсказки и их обработка
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.info-btn');
+    const tooltips = document.querySelectorAll('.tooltip');
 
     buttons.forEach((button, index) => {
-        const icon = button.querySelector('.info-icon'); // Ищем иконку внутри кнопки
+        const icon = button.querySelector('.info-icon');
 
         button.addEventListener('click', () => {
-            // Переключаем состояние подсказки
             toggleTooltip(tooltips[index]);
 
-            // Если эффект уже активен, немедленно его убираем
             if (icon.classList.contains('active')) {
                 icon.classList.remove('active');
             } else {
-                // Если эффекта нет, добавляем его
                 icon.classList.add('active');
-                // Убираем эффект через 2 секунды, если не было повторного клика
-                setTimeout(() => {
-                    icon.classList.remove('active');
-                }, 2000);
+                setTimeout(() => icon.classList.remove('active'), 2000);
             }
         });
     });
 
     function toggleTooltip(tooltip) {
         if (tooltip.classList.contains('active')) {
-            tooltip.classList.remove('active'); // Скрываем подсказку
+            tooltip.classList.remove('active');
         } else {
-            document.querySelectorAll('.tooltip').forEach(t => t.classList.remove('active')); // Скрываем другие подсказки
-            tooltip.classList.add('active'); // Показываем выбранную подсказку
-
-            setTimeout(() => tooltip.classList.remove('active'), 2000); // Автоматическое скрытие через 2 секунды
+            document.querySelectorAll('.tooltip').forEach(t => t.classList.remove('active'));
+            tooltip.classList.add('active');
+            setTimeout(() => tooltip.classList.remove('active'), 2000);
         }
     }
 });
-
-// Инициализация изображения и текста при загрузке
-updateImages();
-updateText();
