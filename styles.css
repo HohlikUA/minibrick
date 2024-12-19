@@ -37,11 +37,11 @@ body {
     }
 
     #torso {
-        top: 100px !important; 
+        top: 94px !important; 
     }
 
     #legs {
-        top: 190px !important;
+        top: 177px !important;
         max-width: 60%;
     }
 
@@ -215,7 +215,7 @@ body {
 }
 
 .image-selection {
-    margin-top: 20px;
+    margin-top: -10px;
     display: flex;
     justify-content: center;
     align-items: center;
