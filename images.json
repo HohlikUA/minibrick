@@ -1,0 +1,15 @@
+{
+    "head": [
+        "https://i.imgur.com/kQ20qIU.png?raw=true",
+        "https://i.imgur.com/tixroDK.png?raw=true",
+        "https://i.imgur.com/KvHb0LJ.png?raw=true"
+    ],
+    "torso": [
+        "https://imgur.com/aTjW0jd.jpg",
+        "https://imgur.com/yVeDF2M.jpg"
+    ],
+    "legs": [
+        "https://imgur.com/2kcmZGf.jpg",
+        "https://imgur.com/ClKnI7K.jpg"
+    ]
+}
