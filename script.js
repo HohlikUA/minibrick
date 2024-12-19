@@ -11,25 +11,6 @@ const partOptions = {
         'https://github.com/HohlikUA/minibrick/blob/main/Head/14.png?raw=true',
         'https://github.com/HohlikUA/minibrick/blob/main/Head/16.png?raw=true',
         'https://github.com/HohlikUA/minibrick/blob/main/Head/17.png?raw=true',
-    ],
-    torso: [
-        'https://imgur.com/aTjW0jd.jpg',
-        'https://imgur.com/yVeDF2M.jpg' // Добавляем несколько вариантов изображений
-    ],
-    legs: [
-        'https://imgur.com/2kcmZGf.jpg',
-        'https://imgur.com/ClKnI7K.jpg' // Добавляем несколько вариантов изображений
-    ]
-};const partOptions = {
-    head: [
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/1.png?raw=true', // Добавляем несколько вариантов изображений
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/10.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/11.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/12.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/15.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/14.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/16.png?raw=true',
-        'https://github.com/HohlikUA/minibrick/blob/main/Head/17.png?raw=true',
         'https://github.com/HohlikUA/minibrick/blob/main/Head/18.png?raw=true',
         'https://github.com/HohlikUA/minibrick/blob/main/Head/19.png?raw=true',
         'https://github.com/HohlikUA/minibrick/blob/main/Head/2.png?raw=true',
